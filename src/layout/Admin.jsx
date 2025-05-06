@@ -73,7 +73,7 @@ const Admin = () => {
 
 
   return (
-    <main className="bg-[#f1f8f9] min-h-screen relative">
+    <main className="bg-[#f1f8f9] h-screen relative">
       {/* HEADER */}
       <header className={`dark:bg-[#141824] border-b border-blue-700 h-16 w-full bg-white`}>
         <nav className="flex items-center justify-between px-5 h-full">

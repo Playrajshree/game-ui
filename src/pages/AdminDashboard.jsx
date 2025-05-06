@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, use } from 'react'
+import React, { useEffect, useState} from 'react'
 import Loader from '../components/Loader';
 import {toast} from 'sonner';
 import useAdminResult  from '../store/Admin.resultstore';
@@ -6,6 +6,8 @@ import useAdmin from '../store/Admin';
 import ResultTable from '../components/ResultTable';
 import { shallow } from 'zustand/shallow';
 import { useNavigate } from 'react-router-dom';
+import CellEdit from '../components/CellEdit';
+
 
 
 
@@ -56,7 +58,8 @@ const AdminDashboard = () => {
         {loading && <Loader loading={loading} position="absolute" />}
          {
            adminResults.length > 0 ? (
-             <ResultTable results = {adminResults} />
+           
+            <ResultTable results={adminResults} />
            
            ): (
                   <div className='w-full h-full flex items-center justify-center'>
@@ -64,6 +67,7 @@ const AdminDashboard = () => {
                   </div>
            )
          }   
+
     </section>
   )
 }

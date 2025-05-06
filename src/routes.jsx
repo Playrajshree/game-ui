@@ -13,6 +13,9 @@ import AddResult from "./pages/AddResult";
 import Profile from "./pages/Profile";  
 import ChangePassword from "./pages/ChangePassword";
 import ChangeEmail from "./pages/ChangeEmail";
+import ResultHistory from "./pages/ResultHistory";
+
+
 
 const router = createBrowserRouter(
     [
@@ -22,6 +25,10 @@ const router = createBrowserRouter(
                   {
                      path: "",
                      element: <Home />
+                  },
+                  {
+                      path: "result-history",
+                      element: <ResultHistory />
                   }
              ]
          },

@@ -3,8 +3,10 @@ import useResult from '../store/result.store';
 import { toast } from 'sonner';
 import Loader from '../components/Loader';
 import ResultTable from '../components/ResultTable';
-
 import { dateFormatter } from '../utils/formateDate';
+import longDateFormater from '../utils/longDateFormater';
+
+
 const Home = () => {
     const results = useResult((state) => state.results);
     const [error, setError] = useState(null);
@@ -36,19 +38,71 @@ const Home = () => {
           const interval =    setInterval(() => {
             fetchResults();
         }
-        , 20 * 60 * 1000); // 20 minutes
+        , 10 * 60 * 1000); // 20 minutes
         return () => {
             clearInterval(interval);
         }
     }
     , [date, setResults]);
-
+   console.log()
     return (
         <section className='w-full h-full px-4 py-4 overflow-x-hidden'>
-            <p className='text-center tracking-wide mt-5 font-semibold text-blue-700 mb-4'>Result of the day: {dateFormatter(date)}</p>
-            <div className='w-full md:w-full md:max-w-full overflow-x-auto lg:overflow-hidden flex justify-start items-stretch'>
+         
+            <div className='w-full'>
                 {
                     results.length > 0 ? (
+                        // <ResultTable rows={results.map((data) => ({
+                        //     ...data,
+                        //     date: data.date ? dateFormatter(data.date.split("T")[0]) : data.date,
+                        //   }))}
+                        //   columns={Object.keys(results[0])
+                        //     .filter(
+                        //       (col) =>
+                        //         col !== "_id" &&
+                        //         col !== "createdAt" &&
+                        //         col !== "updatedAt" &&
+                        //         col !== "creatorId" &&
+                        //         col !== "__v"
+                        //     )
+                        //     .map((col) => ({
+                        //       field: col,
+                        //       headerName: col.toUpperCase(),
+                        //       headerAlign: 'center',
+                        //       align: 'center',
+                        //       minWidth: 100, // ensures responsiveness
+                        //       flex: 1,
+                        //       sortable: false, // disables sort arrows
+                        //       resizable: false, // disables resizing
+                        //       headerClassName: 'text-center',
+                        //       cellClassName: 'text-center',
+                        //     }))} />
+                        // <Table
+                        // rows={results.map((data) => ({
+                        //   ...data,
+                        //   date: data.date ? dateFormatter(data.date.split("T")[0]) : data.date,
+                        // }))}
+                        // columns={Object.keys(results[0])
+                        //   .filter(
+                        //     (col) =>
+                        //       col !== "_id" &&
+                        //       col !== "createdAt" &&
+                        //       col !== "updatedAt" &&
+                        //       col !== "creatorId" &&
+                        //       col !== "__v"
+                        //   )
+                        //   .map((col) => ({
+                        //     field: col,
+                        //     headerName: col.toUpperCase(),
+                        //     headerAlign: 'center',
+                        //     align: 'center',
+                        //     minWidth: 100, // ensures responsiveness
+                        //     flex: 1,
+                        //     sortable: false, // disables sort arrows
+                        //     resizable: false, // disables resizing
+                        //     headerClassName: 'text-center',
+                        //     cellClassName: 'text-center',
+                        //   }))}
+                        // />
                         <ResultTable results={results} />
                     ) : (
                         <div className='w-full h-full flex items-center justify-center'>
